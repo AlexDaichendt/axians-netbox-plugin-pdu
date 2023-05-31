@@ -7,7 +7,7 @@ services:
       dockerfile: development/Dockerfile
     image: "axians-netbox-plugin-pdu/netbox:${NETBOX_VER}-py${PYTHON_VER}"
     command: >
-      sh -c "python manage.py migrate &&
+      sh -c "echo $SECRET_KEY && python manage.py migrate &&
              python manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
@@ -52,7 +52,7 @@ services:
       - ../axians_netbox_pdu:/source/axians_netbox_pdu
     tty: true
   postgres:
-    image: postgres:10
+    image: postgres:11
     env_file: dev.env
     volumes:
       - pgdata_axians_netbox_pdu:/var/lib/postgresql/data

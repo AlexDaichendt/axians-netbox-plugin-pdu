@@ -2,7 +2,7 @@ import os
 
 from invoke import task
 
-PYTHON_VER = os.getenv("PYTHON_VER", "3.9")
+PYTHON_VER = os.getenv("PYTHON_VER", "3.10")
 NETBOX_VER = os.getenv("NETBOX_VER", "master")
 
 # Name of the docker image/container
@@ -15,6 +15,8 @@ BUILD_NAME = "axians_netbox_pdu"
 # ------------------------------------------------------------------------------
 # BUILD
 # ------------------------------------------------------------------------------
+
+
 @task
 def build(context, netbox_ver=NETBOX_VER, python_ver=PYTHON_VER):
     """Build all docker images.
